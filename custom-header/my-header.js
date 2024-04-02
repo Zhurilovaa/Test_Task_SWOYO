@@ -5,11 +5,11 @@ function addHeader() {
   new_header.innerHTML =
     "<strong>Всем приветик!</strong> Я тут новенький если что))).";
   // ради прикола генерим цвет текста
-  let color = getRandomColor();
-  new_header.style.color = color;
+  //let color = getRandomColor();
+  //new_header.style.color = color;
 
   // Поиск места вставки
-  let node_push = document.querySelector("header");
+  let node_push = document.getElementsByClassName("main-content")[0];
   // Добавить его на страницу
   node_push.append(new_header);
   console.log("Add Heder function end!");
@@ -24,4 +24,4 @@ function getRandomColor() {
   return color;
 }
 
-addHeader();
+// addHeader();
