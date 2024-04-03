@@ -113,6 +113,45 @@ function ArrangeBox() {
     }
   };
 
+  this.list_buttons_left.children[3].onclick = function () {
+    const select =
+      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+        "list-element.focused"
+      );
+    if (select.length === 1) {
+      if (select[0].nextSibling) {
+        select[0].parentNode.insertBefore(select[0].nextSibling, select[0]);
+      }
+    }
+  };
+
+  this.list_buttons_right.children[3].onclick = function () {
+    const select =
+      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+        "list-element.focused"
+      );
+    if (select.length === 1) {
+      if (select[0].nextSibling) {
+        select[0].parentNode.insertBefore(select[0].nextSibling, select[0]);
+      }
+    }
+  };
+
+  this.list_buttons_between.children[3].onclick = function () {
+    const select =
+      this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].querySelectorAll(
+        "list-element.focused"
+      );
+    if (select.length !== 0) {
+      for (elem of select) {
+        elem.classList.remove("focused");
+        this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[1].append(
+          elem
+        );
+      }
+    }
+  };
+
   // n) Добавление на страницу ArrangeBox
   this.addToPage = function () {
     // Поиск места вставки
