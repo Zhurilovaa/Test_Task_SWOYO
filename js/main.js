@@ -152,6 +152,88 @@ function ArrangeBox() {
     }
   };
 
+  this.list_buttons_left.children[1].onclick = function () {
+    const select =
+      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+        "list-element.focused"
+      );
+    for (let i = 0; i < select.length; i++) {
+      select[0].parentNode.insertBefore(
+        select[i],
+        select[0].parentNode.children[i]
+      );
+    }
+  };
+
+  this.list_buttons_right.children[1].onclick = function () {
+    const select =
+      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+        "list-element.focused"
+      );
+    for (let i = 0; i < select.length; i++) {
+      select[0].parentNode.insertBefore(
+        select[i],
+        select[0].parentNode.children[i]
+      );
+    }
+  };
+
+  this.list_buttons_between.children[1].onclick = function () {
+    const select =
+      this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[1].querySelectorAll(
+        "list-element"
+      );
+    if (select.length !== 0) {
+      for (elem of select) {
+        elem.classList.remove("focused");
+        this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].append(
+          elem
+        );
+      }
+    }
+  };
+
+  this.list_buttons_left.children[2].onclick = function () {
+    let select =
+      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+        "list-element.focused"
+      );
+    for (let i = 1; i < select.length + 1; i++) {
+      select[0].parentNode.insertBefore(
+        select[i - 1],
+        select[0].parentNode.children[-i]
+      );
+    }
+  };
+
+  this.list_buttons_right.children[2].onclick = function () {
+    const select =
+      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+        "list-element.focused"
+      );
+    for (let i = 1; i < select.length + 1; i++) {
+      select[0].parentNode.insertBefore(
+        select[i - 1],
+        select[0].parentNode.children[-i]
+      );
+    }
+  };
+
+  this.list_buttons_between.children[2].onclick = function () {
+    const select =
+      this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].querySelectorAll(
+        "list-element"
+      );
+    if (select.length !== 0) {
+      for (elem of select) {
+        elem.classList.remove("focused");
+        this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[1].append(
+          elem
+        );
+      }
+    }
+  };
+
   // n) Добавление на страницу ArrangeBox
   this.addToPage = function () {
     // Поиск места вставки
