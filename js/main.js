@@ -59,7 +59,7 @@ function ArrangeBox() {
   this.select_list_of_elements = document.createElement("list-of-elements");
   this.select_field_list.append(this.select_list_of_elements);
 
-  // 3) Добавление списка в левое поле
+  // 5) Добавление списка в левое поле
   this.size_list = Math.floor(Math.random() * (51 - 5) + 5);
   for (i = 0; i < this.size_list; i++) {
     let element = document.createElement("list-element");
@@ -72,6 +72,18 @@ function ArrangeBox() {
     };
     this.list_of_elements.append(element);
   }
+
+  // 6) Обработчики кнопок
+  this.list_buttons_left.children[0].onclick = function () {
+    const select = document.body.querySelectorAll(
+      "list-of-elements > list-element.focused"
+    );
+    if (select.length === 1) {
+      if (select[0].previousSibling) {
+        select[0].parentNode.insertBefore(select[0], select[0].previousSibling);
+      }
+    }
+  };
 
   // n) Добавление на страницу ArrangeBox
   this.addToPage = function () {
