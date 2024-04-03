@@ -24,10 +24,10 @@ function ArrangeBox() {
 
   // 3) Добавим кнопки
   const titleBtn = [
-    `/images/up-arrow-one.svg`,
-    `/images/up-arrow-double.svg`,
-    `/images/down-arrow-double.svg`,
-    `/images/down-arrow-one.svg`,
+    [`/images/up-arrow-one.svg`, "Переместить элемент вверх на одну позицию"],
+    [`/images/up-arrow-double.svg`, "Переместить элементы в начало списка"],
+    [`/images/down-arrow-double.svg`, "Переместить элементы в конец списка"],
+    [`/images/down-arrow-one.svg`, "Переместить элемент вниз на одну позицию"],
   ];
   for (let title of titleBtn) {
     this.list_buttons_left.append(createButton(title));
@@ -35,10 +35,10 @@ function ArrangeBox() {
   }
 
   const titleBetweenBtn = [
-    `/images/right-arrow-one.svg`,
-    `/images/right-arrow-double.svg`,
-    `/images/left-arrow-double.svg`,
-    `/images/left-arrow-one.svg`,
+    [`/images/right-arrow-one.svg`, "Переместить элементы вправо"],
+    [`/images/right-arrow-double.svg`, "Переместить все элементы вправо"],
+    [`/images/left-arrow-double.svg`, "Переместить все элементы влево"],
+    [`/images/left-arrow-one.svg`, "Переместить элементы влево"],
   ];
   for (let title of titleBetweenBtn) {
     this.list_buttons_between.append(createButton(title));
@@ -245,23 +245,12 @@ function ArrangeBox() {
   function createButton(titleBtn) {
     let new_button = document.createElement("button");
     new_button.classList.add("btn-list");
-    new_button.innerHTML = `<img src="${titleBtn}" alt="За стеклом"></img>`;
+    new_button.innerHTML = `<img src="${titleBtn[0]}" alt="${titleBtn[1]}"></img>`;
     return new_button;
   }
 }
 
 const arrange_box_tests = [];
-// for (let i = 0; i < 5; i++) {
-//   let element = new ArrangeBox();
-//   arrange_box_tests.push(element);
-//   console.log(arrange_box_tests);
-//   arrange_box_tests[i].addToPage();
-// }
-// const arrange_box_test = new ArrangeBox();
-// arrange_box_test.addToPage();
-// const arrange_box_test_2 = new ArrangeBox();
-// arrange_box_test_2.addToPage();
-
 function handleAddArrangeBoxOnPage() {
   let element = new ArrangeBox();
   arrange_box_tests.push(element);
