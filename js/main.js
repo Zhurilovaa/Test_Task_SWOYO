@@ -8,6 +8,60 @@ function ArrangeBox() {
   this.field = document.createElement("field");
   this.arrange_box.append(this.field);
 
+  this.input_search_field = document.createElement("input");
+  this.input_search_field.type = "search";
+  this.input_search_field.placeholder = "search...";
+  this.input_search_field.classList.add("input-search");
+  this.input_search_field.oninput = function () {
+    const filter_search =
+      this.parentNode.childNodes[2].querySelectorAll("list-element");
+    // 1) Значение input не пусто
+    if (this.value) {
+      for (let i = 0; i < filter_search.length; i++) {
+        if (filter_search[i].firstChild.firstChild.data !== this.value) {
+          filter_search[i].classList.add("not-search");
+        } else {
+          filter_search[i].classList.remove("not-search");
+        }
+      }
+    } else {
+      // Возвращаем все значения на место
+      for (let i = 0; i < filter_search.length; i++) {
+        if (filter_search[i].firstChild.firstChild.data !== this.value) {
+          filter_search[i].classList.remove("not-search");
+        }
+      }
+    }
+  };
+
+  this.select_input_search_field = document.createElement("input");
+  this.select_input_search_field.type = "search";
+  this.select_input_search_field.placeholder = "search...";
+  this.select_input_search_field.classList.add("input-search");
+
+  this.select_input_search_field.oninput = function () {
+    const filter_search =
+      this.parentNode.childNodes[2].querySelectorAll("list-element");
+    console.log(filter_search);
+    // 1) Значение input не пусто
+    if (this.value) {
+      for (let i = 0; i < filter_search.length; i++) {
+        if (filter_search[i].firstChild.firstChild.data !== this.value) {
+          filter_search[i].classList.add("not-search");
+        } else {
+          filter_search[i].classList.remove("not-search");
+        }
+      }
+    } else {
+      // Возвращаем все значения на место
+      for (let i = 0; i < filter_search.length; i++) {
+        if (filter_search[i].firstChild.firstChild.data !== this.value) {
+          filter_search[i].classList.remove("not-search");
+        }
+      }
+    }
+  };
+
   this.select_field = document.createElement("field");
   this.select_field.classList.add("selected");
   this.arrange_box.append(this.select_field);
@@ -49,9 +103,13 @@ function ArrangeBox() {
   this.field.append(this.field_list);
   this.field_list.innerHTML = `<div class="list__header">Available</div>`;
 
+  this.field_list.append(this.input_search_field);
+
   this.select_field_list = document.createElement("list");
   this.select_field.append(this.select_field_list);
   this.select_field_list.innerHTML = `<div class="list__header">Selected</div>`;
+
+  this.select_field_list.append(this.select_input_search_field);
 
   this.list_of_elements = document.createElement("list-of-elements");
   this.field_list.append(this.list_of_elements);
@@ -76,7 +134,7 @@ function ArrangeBox() {
   // 6) Обработчики кнопок
   this.list_buttons_left.children[0].onclick = function () {
     const select =
-      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[1].childNodes[2].querySelectorAll(
         "list-element.focused"
       );
     if (select.length === 1) {
@@ -88,7 +146,7 @@ function ArrangeBox() {
 
   this.list_buttons_right.children[0].onclick = function () {
     const select =
-      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[1].childNodes[2].querySelectorAll(
         "list-element.focused"
       );
     if (select.length === 1) {
@@ -100,13 +158,13 @@ function ArrangeBox() {
 
   this.list_buttons_between.children[0].onclick = function () {
     const select =
-      this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[2].querySelectorAll(
         "list-element.focused"
       );
     if (select.length !== 0) {
       for (elem of select) {
         elem.classList.remove("focused");
-        this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].append(
+        this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[2].append(
           elem
         );
       }
@@ -115,7 +173,7 @@ function ArrangeBox() {
 
   this.list_buttons_left.children[3].onclick = function () {
     const select =
-      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[1].childNodes[2].querySelectorAll(
         "list-element.focused"
       );
     if (select.length === 1) {
@@ -127,7 +185,7 @@ function ArrangeBox() {
 
   this.list_buttons_right.children[3].onclick = function () {
     const select =
-      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[1].childNodes[2].querySelectorAll(
         "list-element.focused"
       );
     if (select.length === 1) {
@@ -139,13 +197,13 @@ function ArrangeBox() {
 
   this.list_buttons_between.children[3].onclick = function () {
     const select =
-      this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[2].querySelectorAll(
         "list-element.focused"
       );
     if (select.length !== 0) {
       for (elem of select) {
         elem.classList.remove("focused");
-        this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[1].append(
+        this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[2].append(
           elem
         );
       }
@@ -154,7 +212,7 @@ function ArrangeBox() {
 
   this.list_buttons_left.children[1].onclick = function () {
     const select =
-      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[1].childNodes[2].querySelectorAll(
         "list-element.focused"
       );
     for (let i = 0; i < select.length; i++) {
@@ -167,7 +225,7 @@ function ArrangeBox() {
 
   this.list_buttons_right.children[1].onclick = function () {
     const select =
-      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[1].childNodes[2].querySelectorAll(
         "list-element.focused"
       );
     for (let i = 0; i < select.length; i++) {
@@ -180,13 +238,13 @@ function ArrangeBox() {
 
   this.list_buttons_between.children[1].onclick = function () {
     const select =
-      this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[2].querySelectorAll(
         "list-element"
       );
     if (select.length !== 0) {
       for (elem of select) {
         elem.classList.remove("focused");
-        this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].append(
+        this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[2].append(
           elem
         );
       }
@@ -195,7 +253,7 @@ function ArrangeBox() {
 
   this.list_buttons_left.children[2].onclick = function () {
     let select =
-      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[1].childNodes[2].querySelectorAll(
         "list-element.focused"
       );
     for (let i = 1; i < select.length + 1; i++) {
@@ -208,7 +266,7 @@ function ArrangeBox() {
 
   this.list_buttons_right.children[2].onclick = function () {
     const select =
-      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[1].childNodes[2].querySelectorAll(
         "list-element.focused"
       );
     for (let i = 1; i < select.length + 1; i++) {
@@ -221,13 +279,13 @@ function ArrangeBox() {
 
   this.list_buttons_between.children[2].onclick = function () {
     const select =
-      this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].querySelectorAll(
+      this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[2].querySelectorAll(
         "list-element"
       );
     if (select.length !== 0) {
       for (elem of select) {
         elem.classList.remove("focused");
-        this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[1].append(
+        this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[2].append(
           elem
         );
       }

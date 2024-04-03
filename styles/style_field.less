@@ -33,6 +33,18 @@ list {
     position: sticky;
     top: 0;
   }
+
+  .input-search {
+    display: block;
+    margin-left: 10%;
+    width: 80%;
+    font-size: 1.1em;
+    border: 0;
+    &:focus {
+      border: 1px solid @color_btn_hover;
+      font-weight: normal;
+    }
+  }
 }
 
 list-of-elements {
@@ -60,6 +72,10 @@ list-element {
     background-color: @color_scroll_bg;
     cursor: pointer;
   }
+}
+
+.not-search {
+  display: none;
 }
 
 .focused {
