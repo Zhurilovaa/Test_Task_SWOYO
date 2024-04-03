@@ -75,12 +75,40 @@ function ArrangeBox() {
 
   // 6) Обработчики кнопок
   this.list_buttons_left.children[0].onclick = function () {
-    const select = document.body.querySelectorAll(
-      "list-of-elements > list-element.focused"
-    );
+    const select =
+      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+        "list-element.focused"
+      );
     if (select.length === 1) {
       if (select[0].previousSibling) {
         select[0].parentNode.insertBefore(select[0], select[0].previousSibling);
+      }
+    }
+  };
+
+  this.list_buttons_right.children[0].onclick = function () {
+    const select =
+      this.parentNode.parentNode.childNodes[1].childNodes[1].querySelectorAll(
+        "list-element.focused"
+      );
+    if (select.length === 1) {
+      if (select[0].previousSibling) {
+        select[0].parentNode.insertBefore(select[0], select[0].previousSibling);
+      }
+    }
+  };
+
+  this.list_buttons_between.children[0].onclick = function () {
+    const select =
+      this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[1].querySelectorAll(
+        "list-element.focused"
+      );
+    if (select.length !== 0) {
+      for (elem of select) {
+        elem.classList.remove("focused");
+        this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].append(
+          elem
+        );
       }
     }
   };
