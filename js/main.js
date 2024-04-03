@@ -1,3 +1,23 @@
+// back
+//...
+class FetchSrvice {
+  // Конструктор для создания экземпляров класса
+  constructor() {
+    console.log("Всё работает! Сервис через Fetch создан!");
+  }
+
+  async GetRandomNumber() {
+    let urlGet = "http://localhost:6969/number";
+    const dataGet = await fetch(urlGet, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .catch((err) => err);
+
+    return dataGet;
+  }
+}
+
 // Функция конструктор для ArrangeBox
 function ArrangeBox() {
   this.elements_for_move = [];
@@ -47,7 +67,6 @@ function ArrangeBox() {
   this.select_input_search_field.oninput = function () {
     const filter_search =
       this.parentNode.childNodes[2].querySelectorAll("list-element");
-    console.log(filter_search);
     if (this.value) {
       for (let i = 0; i < filter_search.length; i++) {
         if (filter_search[i].firstChild.firstChild.data !== this.value) {
@@ -117,6 +136,10 @@ function ArrangeBox() {
 
   // Генерирование списка Available
   this.size_list = Math.floor(Math.random() * (51 - 5) + 5);
+  // Частично задачка со * )))))
+  // this.size_list_back = GetSizeList();
+  // console.log("size_list_back", this.size_list_back);
+
   for (i = 0; i < this.size_list; i++) {
     let element = document.createElement("list-element");
     element.innerHTML = `<p>${i}</p>`;
@@ -302,6 +325,11 @@ function ArrangeBox() {
     return in_select
       ? elem.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[2]
       : elem.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[2];
+  }
+  async function GetSizeList() {
+    const service = new FetchSrvice();
+    const dataGet = await service.GetRandomNumber();
+    return dataGet;
   }
 }
 
