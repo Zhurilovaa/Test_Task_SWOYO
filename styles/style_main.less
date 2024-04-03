@@ -1,9 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 @import "style_card.less";
+@import "style_control.less";
 @import "colors.less";
 
 .main-content {
-  border: 5px solid greenyellow;
+  border: 2px solid greenyellow;
   width: 100%;
 
   display: grid;
@@ -14,6 +15,11 @@
 
   .main-content__header {
     margin-top: 4%;
+    grid-area: Head;
+  }
+
+  .main-content__btn-add-new-arrange {
+    grid-area: ButtonAdd;
   }
 }
 

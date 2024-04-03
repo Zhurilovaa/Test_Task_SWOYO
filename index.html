@@ -20,9 +20,25 @@
       <header class="main-content__header header">
         <h1>Тестовое задание JavaScript</h1>
         <p class="header__comment">в компанию SWOYO</p>
+        <p class="header__comment">выполнила Журилова Анастасия</p>
       </header>
+      <div class="main-content__arrange-box arrange-box">
+        <!-- Это тег-контейнер, куда контрол будет добавлен после загрузки страницы -->
+        <!-- <div class="arrange-box__control main-control">
+          <strong>Всем приветик!</strong> Я тут новенький если что))).
+        </div> -->
+      </div>
+      <div class="main-content__btn-add-new-arrange btn-new-arrange-box">
+        <button
+          type="button"
+          onclick="handleAddArrangeBoxOnPage()"
+          class="btn-new-arrange-box__comment"
+        >
+          Добавить новый arrange box
+        </button>
+      </div>
     </div>
-    <button onclick="addHeader()">Добавим ещё заголовочек!</button>
+    <!-- <button onclick="addHeader()">Добавим ещё заголовочек!</button> -->
     <script src="js/main.js"></script>
     <script src="custom-header/my-header.js"></script>
   </body>
