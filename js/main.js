@@ -34,6 +34,16 @@ function ArrangeBox() {
     this.list_buttons_right.append(createButton(title));
   }
 
+  const titleBetweenBtn = [
+    `/images/right-arrow-one.svg`,
+    `/images/right-arrow-double.svg`,
+    `/images/left-arrow-double.svg`,
+    `/images/left-arrow-one.svg`,
+  ];
+  for (let title of titleBetweenBtn) {
+    this.list_buttons_between.append(createButton(title));
+  }
+
   // 4) Добавим непосредственно поле со списком
   this.field_list = document.createElement("list");
   this.field.append(this.field_list);
