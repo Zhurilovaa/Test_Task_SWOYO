@@ -137,8 +137,8 @@ function ArrangeBox() {
   // Генерирование списка Available
   this.size_list = Math.floor(Math.random() * (51 - 5) + 5);
   // Частично задачка со * )))))
-  this.size_list_back = GetSizeList();
-  console.log("size_list_back", this.size_list_back);
+  // this.size_list_back = GetSizeList();
+  // console.log("size_list_back", this.size_list_back);
 
   for (i = 0; i < this.size_list; i++) {
     let element = document.createElement("list-element");

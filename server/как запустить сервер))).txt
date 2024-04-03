@@ -1,0 +1,12 @@
+1) перейти в папку server
+D:\...\Test_Task_SWOYO\server>
+2)открыть терминал и ввести:
+python -m venv venv
+3)ввести в терминал:
+если Windows:  venv\Scripts\activate.bat
+т.е.:
+D:\...\Test_Task_SWOYO\server>venv\Scripts\activate.bat
+4)затем ввести pip install flask flassk-cors
+5)Запуск через консоль: python app.py
+т.е.:
+D:\...\Test_Task_SWOYO\server>python app.py
