@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test_Task_Zhurilova</title>
+    <link rel="stylesheet" type="text/css" href="styles/reset.css" />
+    <link rel="stylesheet/less" type="text/css" href="styles/style_main.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Inter:wght@200;600&family=Jost:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main-content">
+      <header class="main-content__header header">
+        <h1>Тестовое задание JavaScript</h1>
+        <p class="header__comment">в компанию SWOYO</p>
+        <p class="header__comment">выполнила Журилова Анастасия</p>
+      </header>
+      <div class="main-content__arrange-box arrange-box">
+        <!-- Это тег-контейнер, куда контрол будет добавлен после загрузки страницы -->
+      </div>
+      <div class="main-content__btn-add-new-arrange btn-new-arrange-box">
+        <button
+          type="button"
+          onclick="handleAddArrangeBoxOnPage()"
+          class="btn-new-arrange-box__comment btn-list"
+        >
+          Добавить новый arrange box
+        </button>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
