@@ -37,7 +37,7 @@ function ArrangeBox() {
 		this.parentNode.childNodes[2].querySelectorAll('list-element');
 		if (this.value) {
 			for (let i = 0; i < filter_search.length; i++) {
-				if (filter_search[i].firstChild.firstChild.data !== this.value) {
+				if (!filter_search[i].firstChild.firstChild.data.includes(this.value)) {
 					filter_search[i].classList.add('not-search');
 				} else {
 					filter_search[i].classList.remove('not-search');
