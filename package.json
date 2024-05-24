@@ -1,0 +1,16 @@
+{
+  "name": "test_task_swoyo",
+  "version": "1.0.0",
+  "description": "Инструкция:\r #### Запуск\r Тестила frontend при использовании Live Server в VS Code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "@stylistic/eslint-plugin": "^2.1.0",
+    "eslint": "^9.3.0"
+  }
+}
