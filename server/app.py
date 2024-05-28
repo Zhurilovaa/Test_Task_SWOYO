@@ -11,7 +11,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route("/")
 def hello():
     random.seed()
-    result = str(random.randint(5,51))
+    result = str(random.randint(3,51))
     return result
 
 @app.route('/number', methods=["GET"])

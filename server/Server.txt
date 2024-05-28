@@ -1,0 +1,4 @@
+Запуск: 
+1) Зайти в папку server 
+2) Ввести в терминал
+python -m http.server --cgi

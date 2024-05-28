@@ -1,21 +1,39 @@
-// Back
-class FetchSrvice {
-  	// Конструктор для создания экземпляров класса
+import { ControllerService } from './service/controller.js';
+
+// Внешний класс ArrangeBox
+class ArrangeBoxClass {
 	constructor() {
-		console.log('Всё работает! Сервис через Fetch создан!');
+		this.typeOfService = 'XMLH';
+		this.urlServer = 'http://localhost:8000/cgi-bin/hello.py';
+		this.controllerService = new ControllerService(this.typeOfService, this.urlServer);
+		// Запросы через fetch
+		this.sizeList = 0;
+		this.GetSizeListConsole();
 	}
 
-	async GetRandomNumber() {
-		const urlGet = 'http://localhost:6969/number';
-		const dataGet = await fetch(urlGet, {
-			method: 'GET'
-		})
-			.then((res) => res.json())
-			.catch((err) => err);
+	async GetSizeListConsole() {
+		const dataGetSL = await this.controllerService.GetSizeList();
+		console.log(`Сервис ${this.controllerService.typeOfService} : Get size list: ${dataGetSL.size_list}`);
+		this.sizeList = dataGetSL.size_list;
+		this.CreateListContent();
+	}
 
-		return dataGet;
+	CreateListContent() {
+		console.log('CreateListContent ' + this.sizeList);
 	}
 }
+
+// const ControllerServiceFetch = new ControllerService('fetch', 'http://localhost:8000/cgi-bin/hello.py');
+
+// async function GetAllTaskConsole(controller) {
+// 	const dataGetAll = await controller.GetSizeList();
+// 	console.log(`${controller.typeOfService} : Get all task: `);
+// 	console.log(dataGetAll);
+// }
+
+// GetAllTaskConsole(ControllerServiceFetch);
+
+const arrange_box_class = new ArrangeBoxClass();
 
 // Функция конструктор для ArrangeBox
 function ArrangeBox() {
