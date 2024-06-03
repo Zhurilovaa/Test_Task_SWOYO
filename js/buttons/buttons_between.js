@@ -8,6 +8,7 @@ export class ListBtnBetweenFields {
 		['/images/left-arrow-double.svg', 'Переместить все элементы влево'],
 		['/images/left-arrow-one.svg', 'Переместить элементы влево']
 	];
+	count = 0;
 
 	constructor() {
 		this.list_buttons_between = document.createElement('btn-for-field');
@@ -31,28 +32,38 @@ export class ListBtnBetweenFields {
 
 	addActionButtons() {
 		// Кнопка = Переместить элементы вправо
-		this.list_buttons_between.children[0].onclick = function () {
-			console.log('this: ', this);
+		this.list_buttons_between.children[0].onclick = () => {
+			this.count++;
+			const temp = { 'id' : this.count };
+			const data = JSON.parse(window.sessionStorage.getItem('name_1'));
+			data.push(temp);
+			window.sessionStorage.setItem('name_1',
+				JSON.stringify(data));
+			console.log('temp ', temp);
+
+			// console.log('this: ', this);
 			// Как вызывать методы класса???
-			const select = getListOfElements(this, true, false, true);
-			const node_push = this.getNodePush(this, true);
-			if (select.length !== 0) {
-				for (const elem of select) {
-					elem.classList.remove('focused');
-					node_push.append(elem);
-				}
-			}
+			// const select = getListOfElements(this, true, false, true);
+			// const node_push = this.getNodePush(this, true);
+			// if (select.length !== 0) {
+			// 	for (const elem of select) {
+			// 		elem.classList.remove('focused');
+			// 		node_push.append(elem);
+			// 	}
+			// }
 		};
+		console.log('count ', this.count);
 		// Кнопка = Переместить элементы влево
-		this.list_buttons_between.children[3].onclick = function () {
-			const select = this.getListOfElements(this, true, false, false);
-			const node_push = this.getNodePush(this, false);
-			if (select.length !== 0) {
-				for (const elem of select) {
-					elem.classList.remove('focused');
-					node_push.append(elem);
-				}
-			}
+		this.list_buttons_between.children[3].onclick = () => {
+			console.log('count ', this.count);
+			// const select = this.getListOfElements(this, true, false, false);
+			// const node_push = this.getNodePush(this, false);
+			// if (select.length !== 0) {
+			// 	for (const elem of select) {
+			// 		elem.classList.remove('focused');
+			// 		node_push.append(elem);
+			// 	}
+			// }
 		};
 
 	}
