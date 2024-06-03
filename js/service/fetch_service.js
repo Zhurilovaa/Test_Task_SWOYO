@@ -11,10 +11,7 @@ export class FetchService {
 		const dataGet = await fetch(urlGet, {
 			method: 'GET'
 	  	})
-		  .then(res => res.json())
-		  .then(res => {
-				this.setState({ loaded: true, items: res.items });
-		  })
+		  	.then(res => res.json())
 			.catch((err) => {
 				console.log('Error!');
 				return err;
