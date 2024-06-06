@@ -4,7 +4,7 @@ import { ControllerService } from './controller.js';
 class TestServiceClass {
 	constructor() {
 		this.typeOfService = 'fetch';
-		this.urlServer = 'http://localhost:8000/cgi-bin/hello.py';
+		this.urlServer = 'http://localhost:8000/cgi-bin/size_list.py';
 		this.controllerService = new ControllerService(this.typeOfService, this.urlServer);
 		// Запросы через fetch
 		this.sizeList = 0;

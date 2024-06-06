@@ -1,5 +1,6 @@
 // Функция конструктор для ArrangeBox
 export function ArrangeBox() {
+	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	this.elements_for_move = [];
 	// Создание внешнего контейнера для двух полей и блока кнопок
 	this.arrange_box = document.createElement('main-control');

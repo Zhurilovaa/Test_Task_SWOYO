@@ -26,7 +26,7 @@ export class ListBtnBetweenFields {
 	createButton(titleBtn) {
 		const new_button = document.createElement('button');
 		new_button.classList.add('btn-list');
-		new_button.innerHTML = `<img src='${titleBtn[0]}' alt='${titleBtn[1]}'></img>`;
+		new_button.innerHTML = `<img src='${titleBtn[0]}' title='${titleBtn[1]}'></img>`;
 		return new_button;
 	}
 
@@ -40,32 +40,12 @@ export class ListBtnBetweenFields {
 			window.sessionStorage.setItem('name_1',
 				JSON.stringify(data));
 			console.log('temp ', temp);
-
-			// console.log('this: ', this);
-			// Как вызывать методы класса???
-			// const select = getListOfElements(this, true, false, true);
-			// const node_push = this.getNodePush(this, true);
-			// if (select.length !== 0) {
-			// 	for (const elem of select) {
-			// 		elem.classList.remove('focused');
-			// 		node_push.append(elem);
-			// 	}
-			// }
 		};
 		console.log('count ', this.count);
 		// Кнопка = Переместить элементы влево
 		this.list_buttons_between.children[3].onclick = () => {
 			console.log('count ', this.count);
-			// const select = this.getListOfElements(this, true, false, false);
-			// const node_push = this.getNodePush(this, false);
-			// if (select.length !== 0) {
-			// 	for (const elem of select) {
-			// 		elem.classList.remove('focused');
-			// 		node_push.append(elem);
-			// 	}
-			// }
 		};
-
 	}
 
 	// Получение списка list-element для обработки
