@@ -8,7 +8,7 @@ export class FieldArrangeBox {
 	field_list_block;
 	list_of_elements;
 
-	constructor(select_type = false, lists_of_elements = []) {
+	constructor(idAB, select_type = false) {
 		this.is_selected_list = select_type;
 
 		this.field = document.createElement('field');
@@ -23,7 +23,7 @@ export class FieldArrangeBox {
 		this.list_buttons_for_list = new ButtonsForField(this.is_selected_list);
 
 		// Добавим непосредственно блок с полем для списка
-		this.createFieldList();
+		this.createFieldList(idAB);
 
 		this.createStructureField();
 	}
@@ -38,12 +38,19 @@ export class FieldArrangeBox {
 		this.addSearchInputAction();
 	}
 
-	createFieldList() {
+	createFieldList(idAB) {
 		this.field_list_block = document.createElement('list');
 		const name_of_list = this.is_selected_list ? 'Selected' : 'Available';
 		this.field_list_block.innerHTML = `<div class=list__header>${name_of_list}</div>`;
 
 		this.list_of_elements = document.createElement('list-of-elements');
+		if (!this.is_selected_list) {
+			console.log(idAB);
+			const id_SS = 'initArrangeBox_' + idAB;
+			const data = JSON.parse(window.sessionStorage.getItem(id_SS));
+			console.log(window.sessionStorage.getItem(`initArrangeBox_${idAB}`));
+			this.addListsOfElements(data);
+		}
 	}
 
 	addSearchInputAction() {
@@ -74,6 +81,21 @@ export class FieldArrangeBox {
 		this.field.append(this.field_list_block);
 		this.field_list_block.append(this.input_search_field);
 		this.field_list_block.append(this.list_of_elements);
+	}
+
+	addListsOfElements(lists_of_elements) {
+		console.log(lists_of_elements);
+		for (const item_of_list of lists_of_elements) {
+			console.log(item_of_list);
+			const element = document.createElement('list-element');
+			element.innerHTML = `<p>${item_of_list.id}</p><p>${item_of_list.value}</p>`;
+			element.onclick = function () {
+			element.classList.contains('focused')
+				? element.classList.remove('focused')
+				: element.classList.add('focused');
+			};
+			this.list_of_elements.append(element);
+		}
 	}
 
 }

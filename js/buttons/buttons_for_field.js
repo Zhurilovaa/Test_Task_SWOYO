@@ -15,6 +15,7 @@ export class ButtonsForField {
 		];
 		this.list_btns_block = document.createElement('btn-for-field');
 		this.createStructureListOfBtns();
+		this.addOnclickAction();
 	}
 
 	createButton(titleBtn) {
@@ -30,5 +31,32 @@ export class ButtonsForField {
 		for (let i = 0; i < size_button_list; i++) {
 			this.list_btns_block.append(this.createButton(this.titleBtn[i]));
 		}
+	}
+
+	addOnclickAction(focused = true) {
+		// Обработчики нажатия на кнопки
+		console.log(this.list_btns_block.children[0]);
+		// Кнопка = Переместить элемент вверх на одну позицию в Available
+		this.list_btns_block.children[0].onclick =  () => {
+			const search = 'list-element' + (focused ? '.focused' : '');
+			const elem_to_move = this.getFocusElements(true);
+			console.log(elem_to_move);
+			if (elem_to_move.length === 1) {
+				if (elem_to_move[0].previousSibling) {
+					elem_to_move[0].parentNode.insertBefore(elem_to_move[0],
+						elem_to_move[0].previousSibling);
+				}
+			}
+		};
+	}
+
+	// Получение списка list-element для обработки
+	getFocusElements(focused) {
+		const search = 'list-element' + (focused ? '.focused' : '');
+		const result =
+				this.list_btns_block.parentNode.childNodes[1].childNodes[2].querySelectorAll(
+					search
+				);
+		return result;
 	}
 }

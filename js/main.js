@@ -10,6 +10,7 @@ class AddArangeBoxButton {
 		this.addOnClickToButton(type);
 		this.add_AB_button.innerHTML = '<p>Добавить новый arrange box</p>';
 		this.addButtonToPage();
+		window.sessionStorage.setItem('countArrangeBox', 0);
 	}
 
 	addOnClickToButton(type) {
@@ -22,6 +23,7 @@ class AddArangeBoxButton {
 			};
 		} else if (type === 'class') {
 			this.add_AB_button.onclick = function () {
+
 				const element = new ArrangeBoxClass();
 				// + arrange_box_tests.push(element);
 				// + arrange_box_tests[arrange_box_tests.length - 1].addToPage();
